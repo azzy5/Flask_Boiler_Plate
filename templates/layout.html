@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title> Progress DCI Trace Parser </title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="icon" href=" {{ url_for('static',filename=" assets/favicon.ico") }}" type="image/png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src={{ url_for('static',filename="js/jQuery.js")}}></script>
+  <script type="text/javascript" src={{ url_for('static',filename="js/popper.min.js")}}></script>
+  <script type="text/javascript" src={{ url_for('static',filename="js/bootstrap.min.js")}}></script>
+  <script type="text/javascript" src={{ url_for('static',filename="js/data_tables.js")}}></script>
+  <script type="text/javascript" src={{ url_for('static',filename="js/pace.min.js")}}></script>
+  <link rel="stylesheet" href={{ url_for('static',filename="styles/data_tables.css")}} >
+  <link rel="stylesheet" href={{ url_for('static',filename="styles/bootstrap.css")}} >
+  <link rel="stylesheet" href={{ url_for('static',filename="styles/pace.css")}}>
+  <link rel="stylesheet" href={{ url_for('static',filename="styles/style.css")}}>
+  <link rel="stylesheet" href="https://datatables.net/dev/accessibility/DataTables_1_10/media/css/jquery.dataTables.css">
+  <link rel="icon" href={{ url_for('static',filename="assets/FavIcon.ico")}}>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+<!--
+  <link type="text/css" rel="stylesheet" href={{ url_for('static',filename="styles/materialize.min.css")}}  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src=src={{ url_for('static',filename="js/materialize.min.js")}}></script>
+-->
+  <title>Trace parsing tool</title>
 </head>
 <body style="height: 100%; width: 100%; bgcolor:#17181c; display: block; ">
-{% include '_navbar.html' %} {% block body %}{% endblock %}
-<div class="col-sm-12"
-     style="color: rgba(0, 0, 0, 0.54); background-color: rgb(255, 255, 255); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px; border-radius: 2px; z-index: 1; bottom: 0px; position: fixed; height: 25px;">
-    <div style="padding-bottom: 0px;">
-        <footer>
-            <center>
-                <p class="copyright text-muted">Copyright © Progress TS 2019</p>
-            </center>
-        </footer>
-    </div>
-</div>
+  {% include '_navbar.html' %} {% block body %}{% endblock %}
+<script type="text/javascript">
+      $(document).ready(function () {
+          $('#example').DataTable({
+            "pageLength": 100
+          });
+      });
+</script>
+<script>
+    $(".custom-file-input").on("change", function () {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
 </body>
 </html>

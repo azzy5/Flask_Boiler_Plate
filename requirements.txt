@@ -4,7 +4,7 @@ chardet==3.0.4
 Click==7.0
 cloudant==2.4.0
 colorama==0.4.1
-Flask==0.12.2
+Flask==1.0
 Flask-WTF==0.14.2
 idna==2.8
 isort==4.3.21
